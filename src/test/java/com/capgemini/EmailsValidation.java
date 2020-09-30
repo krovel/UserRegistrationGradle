@@ -36,6 +36,10 @@ public class EmailsValidation {
 
 	@Test
 	public void testEmailsValidation() {
+		try {
 		Assert.assertEquals(expected, user.email(Email));
+	}catch(UserRegistrationException e) {
+		Assert.assertEquals("Please enter proper email", e.getMessage());
+		}
 	}
 }
