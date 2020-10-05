@@ -22,6 +22,7 @@ public class EmailsValidation {
 		user = new UserRegistration();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Parameterized.Parameters
 	public static Collection input() {
 		return Arrays.asList(new Object[][] { { "abc@yahoo.com", true }, { "abc-100@yahoo.com", true },
@@ -37,7 +38,7 @@ public class EmailsValidation {
 	@Test
 	public void testEmailsValidation() {
 		try {
-		Assert.assertEquals(expected, user.email(Email));
+		Assert.assertEquals(expected, user.email.valid(Email));
 	}catch(UserRegistrationException e) {
 		Assert.assertEquals("Please enter proper email", e.getMessage());
 		}
